@@ -8,24 +8,15 @@
 
 import Foundation
 
-protocol SQLTable {
-  static var createStatement: String { get }
-}
-
-struct Post
+class Post
 {
-  let id: Int32
-  let name: NSString
-}
-
-extension Post: SQLTable
-{
-  static var createStatement: String {
-    return """
-    CREATE TABLE Posts(
-      Id INTEGER PRIMARY KEY AUTOINCREMENT,
-      Name CHAR(255) NOT NULL
-    );
-    """
-  }
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+    }
+    
+    func title() -> String {
+        return "Test"
+    }
 }

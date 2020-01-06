@@ -51,53 +51,32 @@ class SQLiteDatabase
         print("table created")
     }
 
-    //TODO: Move inside Contact
-    func insertPost(contact: Post) throws {
-        let insertSql = "INSERT INTO Posts (Id, Name) VALUES (?, ?);"
-        let insertStatement = try prepareStatement(sql: insertSql)
-        defer {
-            sqlite3_finalize(insertStatement)
-        }
-        
-        let name: NSString = contact.name
-        guard sqlite3_bind_int(insertStatement, 1, contact.id) == SQLITE_OK  &&
-            sqlite3_bind_text(insertStatement, 2, name.utf8String, -1, nil) == SQLITE_OK else {
-                throw SQLiteError.Bind(message: errorMessage)
-        }
-        
-        guard sqlite3_step(insertStatement) == SQLITE_DONE else {
-            throw SQLiteError.Step(message: errorMessage)
-        }
-        
-        print("Successfully inserted row.")
-    }
-
-    //TODO: Move inside Contact
-    func contact(id: Int32) -> Post? {
-        let querySql = "SELECT * FROM Posts WHERE Id = ?;"
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
-            return nil
-        }
-        
-        defer {
-            sqlite3_finalize(queryStatement)
-        }
-        
-        guard sqlite3_bind_int(queryStatement, 1, id) == SQLITE_OK else {
-            return nil
-        }
-        
-        guard sqlite3_step(queryStatement) == SQLITE_ROW else {
-            return nil
-        }
-        
-        let id = sqlite3_column_int(queryStatement, 0)
-        
-        let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
-        let name = String(cString: queryResultCol1!) as NSString
-        
-        return Post(id: id, name: name)
-    }
+//    //TODO: Move inside Contact
+//    func contact(id: Int32) -> Post? {
+//        let querySql = "SELECT * FROM Posts WHERE Id = ?;"
+//        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+//            return nil
+//        }
+//        
+//        defer {
+//            sqlite3_finalize(queryStatement)
+//        }
+//        
+//        guard sqlite3_bind_int(queryStatement, 1, id) == SQLITE_OK else {
+//            return nil
+//        }
+//        
+//        guard sqlite3_step(queryStatement) == SQLITE_ROW else {
+//            return nil
+//        }
+//        
+//        let id = sqlite3_column_int(queryStatement, 0)
+//        
+//        let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
+//        let name = String(cString: queryResultCol1!) as NSString
+//        
+//        return Post(id: id, name: name)
+//    }
 }
 
 
