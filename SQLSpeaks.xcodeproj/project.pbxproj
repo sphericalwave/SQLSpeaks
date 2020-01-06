@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		AF9B8F2F23C3945D001DB2DB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F2E23C3945D001DB2DB /* main.swift */; };
-		AF9B8F3623C3946D001DB2DB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3523C3946D001DB2DB /* Database.swift */; };
-		AF9B8F3823C395BA001DB2DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3723C395BA001DB2DB /* Contact.swift */; };
+		AF9B8F3623C3946D001DB2DB /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3523C3946D001DB2DB /* SQLiteDatabase.swift */; };
+		AF9B8F3823C395BA001DB2DB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3723C395BA001DB2DB /* Post.swift */; };
 		AF9B8F3A23C395DD001DB2DB /* SQLiteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */; };
-		AF9B8F3C23C39F6F001DB2DB /* Destroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */; };
+		AF9B8F4623C3C030001DB2DB /* SQLSpeaksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F4523C3C030001DB2DB /* SQLSpeaksTests.swift */; };
+		AF9B8F4B23C3E435001DB2DB /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3523C3946D001DB2DB /* SQLiteDatabase.swift */; };
+		AF9B8F4D23C3E529001DB2DB /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F4C23C3E529001DB2DB /* Posts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,14 +31,24 @@
 /* Begin PBXFileReference section */
 		AF9B8F2B23C3945D001DB2DB /* SQLSpeaks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SQLSpeaks; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9B8F2E23C3945D001DB2DB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		AF9B8F3523C3946D001DB2DB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		AF9B8F3723C395BA001DB2DB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		AF9B8F3523C3946D001DB2DB /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
+		AF9B8F3723C395BA001DB2DB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteError.swift; sourceTree = "<group>"; };
-		AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destroy.swift; sourceTree = "<group>"; };
+		AF9B8F4323C3C030001DB2DB /* SQLSpeaksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQLSpeaksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9B8F4523C3C030001DB2DB /* SQLSpeaksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLSpeaksTests.swift; sourceTree = "<group>"; };
+		AF9B8F4723C3C030001DB2DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF9B8F4C23C3E529001DB2DB /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AF9B8F2823C3945D001DB2DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF9B8F4023C3C030001DB2DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9B8F2D23C3945D001DB2DB /* SQLSpeaks */,
+				AF9B8F4423C3C030001DB2DB /* SQLSpeaksTests */,
 				AF9B8F2C23C3945D001DB2DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9B8F2B23C3945D001DB2DB /* SQLSpeaks */,
+				AF9B8F4323C3C030001DB2DB /* SQLSpeaksTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,12 +80,21 @@
 			isa = PBXGroup;
 			children = (
 				AF9B8F2E23C3945D001DB2DB /* main.swift */,
-				AF9B8F3523C3946D001DB2DB /* Database.swift */,
-				AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */,
+				AF9B8F3523C3946D001DB2DB /* SQLiteDatabase.swift */,
 				AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */,
-				AF9B8F3723C395BA001DB2DB /* Contact.swift */,
+				AF9B8F3723C395BA001DB2DB /* Post.swift */,
+				AF9B8F4C23C3E529001DB2DB /* Posts.swift */,
 			);
 			path = SQLSpeaks;
+			sourceTree = "<group>";
+		};
+		AF9B8F4423C3C030001DB2DB /* SQLSpeaksTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF9B8F4523C3C030001DB2DB /* SQLSpeaksTests.swift */,
+				AF9B8F4723C3C030001DB2DB /* Info.plist */,
+			);
+			path = SQLSpeaksTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +117,23 @@
 			productReference = AF9B8F2B23C3945D001DB2DB /* SQLSpeaks */;
 			productType = "com.apple.product-type.tool";
 		};
+		AF9B8F4223C3C030001DB2DB /* SQLSpeaksTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF9B8F4823C3C030001DB2DB /* Build configuration list for PBXNativeTarget "SQLSpeaksTests" */;
+			buildPhases = (
+				AF9B8F3F23C3C030001DB2DB /* Sources */,
+				AF9B8F4023C3C030001DB2DB /* Frameworks */,
+				AF9B8F4123C3C030001DB2DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SQLSpeaksTests;
+			productName = SQLSpeaksTests;
+			productReference = AF9B8F4323C3C030001DB2DB /* SQLSpeaksTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,6 +145,9 @@
 				ORGANIZATIONNAME = SphericalWaveSoftware;
 				TargetAttributes = {
 					AF9B8F2A23C3945D001DB2DB = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					AF9B8F4223C3C030001DB2DB = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
 				};
@@ -123,9 +166,20 @@
 			projectRoot = "";
 			targets = (
 				AF9B8F2A23C3945D001DB2DB /* SQLSpeaks */,
+				AF9B8F4223C3C030001DB2DB /* SQLSpeaksTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF9B8F4123C3C030001DB2DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF9B8F2723C3945D001DB2DB /* Sources */ = {
@@ -133,10 +187,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9B8F3A23C395DD001DB2DB /* SQLiteError.swift in Sources */,
-				AF9B8F3C23C39F6F001DB2DB /* Destroy.swift in Sources */,
-				AF9B8F3823C395BA001DB2DB /* Contact.swift in Sources */,
-				AF9B8F3623C3946D001DB2DB /* Database.swift in Sources */,
+				AF9B8F3823C395BA001DB2DB /* Post.swift in Sources */,
+				AF9B8F3623C3946D001DB2DB /* SQLiteDatabase.swift in Sources */,
 				AF9B8F2F23C3945D001DB2DB /* main.swift in Sources */,
+				AF9B8F4D23C3E529001DB2DB /* Posts.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF9B8F3F23C3C030001DB2DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF9B8F4B23C3E435001DB2DB /* SQLiteDatabase.swift in Sources */,
+				AF9B8F4623C3C030001DB2DB /* SQLSpeaksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +337,40 @@
 			};
 			name = Release;
 		};
+		AF9B8F4923C3C030001DB2DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SQLSpeaksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SW.SQLSpeaksTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AF9B8F4A23C3C030001DB2DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SQLSpeaksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SW.SQLSpeaksTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -291,6 +388,15 @@
 			buildConfigurations = (
 				AF9B8F3323C3945D001DB2DB /* Debug */,
 				AF9B8F3423C3945D001DB2DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF9B8F4823C3C030001DB2DB /* Build configuration list for PBXNativeTarget "SQLSpeaksTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF9B8F4923C3C030001DB2DB /* Debug */,
+				AF9B8F4A23C3C030001DB2DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

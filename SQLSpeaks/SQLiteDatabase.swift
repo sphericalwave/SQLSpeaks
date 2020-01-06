@@ -23,16 +23,14 @@ class SQLiteDatabase
         }
     }
     
+    //TODO: Make Generic
     convenience init() {
-        //TODO: Make Generic
         self.init(path: "/Users/DarkKnight/Desktop/SQLSpeaks/SQLSpeaks/db.sqlite")
     }
 
     init(path: String) {
         guard sqlite3_open(path, &dbPointer) == SQLITE_OK else { fatalError() }
     }
-    
-
     
     deinit { sqlite3_close(dbPointer) }
 
@@ -41,25 +39,20 @@ class SQLiteDatabase
         guard sqlite3_prepare_v2(dbPointer, sql, -1, &statement, nil) == SQLITE_OK else {
             throw SQLiteError.Prepare(message: errorMessage)
         }
-        
         return statement
     }
 
     func createTable(table: SQLTable.Type) throws {
-        // 1
         let createTableStatement = try prepareStatement(sql: table.createStatement)
-        // 2
-        defer {
-            sqlite3_finalize(createTableStatement)
-        }
-        // 3
+        defer { sqlite3_finalize(createTableStatement) }
         guard sqlite3_step(createTableStatement) == SQLITE_DONE else {
             throw SQLiteError.Step(message: errorMessage)
         }
         print("\(table) table created.")
     }
 
-    func insertContact(contact: Contact) throws {
+    //TODO: Move inside Contact
+    func insertPost(contact: Post) throws {
         let insertSql = "INSERT INTO Contact (Id, Name) VALUES (?, ?);"
         let insertStatement = try prepareStatement(sql: insertSql)
         defer {
@@ -79,7 +72,8 @@ class SQLiteDatabase
         print("Successfully inserted row.")
     }
 
-    func contact(id: Int32) -> Contact? {
+    //TODO: Move inside Contact
+    func contact(id: Int32) -> Post? {
         let querySql = "SELECT * FROM Contact WHERE Id = ?;"
         guard let queryStatement = try? prepareStatement(sql: querySql) else {
             return nil
@@ -102,7 +96,7 @@ class SQLiteDatabase
         let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
         let name = String(cString: queryResultCol1!) as NSString
         
-        return Contact(id: id, name: name)
+        return Post(id: id, name: name)
     }
 }
 

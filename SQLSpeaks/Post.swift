@@ -8,16 +8,18 @@
 
 import Foundation
 
-struct Contact {
-  let id: Int32
-  let name: NSString
-}
-
 protocol SQLTable {
   static var createStatement: String { get }
 }
 
-extension Contact: SQLTable {
+struct Post
+{
+  let id: Int32
+  let name: NSString
+}
+
+extension Post: SQLTable
+{
   static var createStatement: String {
     return """
     CREATE TABLE Contact(
