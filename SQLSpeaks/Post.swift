@@ -23,8 +23,8 @@ extension Post: SQLTable
   static var createStatement: String {
     return """
     CREATE TABLE Posts(
-      Id INT PRIMARY KEY NOT NULL,
-      Name CHAR(255)
+      Id INTEGER PRIMARY KEY AUTOINCREMENT,
+      Name CHAR(255) NOT NULL
     );
     """
   }

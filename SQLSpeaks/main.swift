@@ -10,8 +10,19 @@ import Foundation
 
 let db = SQLiteDatabase()
 
-do { try db.createTable(table: Post.self) }
+//Create Posts Table
+let postsTableSQL = """
+CREATE TABLE Posts(
+  Id INTEGER PRIMARY KEY AUTOINCREMENT,
+  Name CHAR(255) NOT NULL
+);
+"""
+do { try db.createTable(sql: postsTableSQL) }
 catch { print(db.errorMessage) }
+
+
+//do { try db.createTable(table: Post.self) }
+//catch { print(db.errorMessage) }
 
 do { try db.insertPost(contact: Post(id: 1, name: "Electro Magnetic Ray")) }
 catch { print(db.errorMessage) }

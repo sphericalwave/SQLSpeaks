@@ -23,7 +23,7 @@ class SQLiteDatabase
         }
     }
     
-    //TODO: Make Generic
+    //TODO: Make Path Relative
     convenience init() {
         self.init(path: "/Users/DarkKnight/Desktop/SQLSpeaks/SQLSpeaks/db.sqlite")
     }
@@ -41,14 +41,14 @@ class SQLiteDatabase
         }
         return statement
     }
-
-    func createTable(table: SQLTable.Type) throws {
-        let createTableStatement = try prepareStatement(sql: table.createStatement)
+    
+    func createTable(sql: String) throws {
+        let createTableStatement = try prepareStatement(sql: sql)
         defer { sqlite3_finalize(createTableStatement) }
         guard sqlite3_step(createTableStatement) == SQLITE_DONE else {
             throw SQLiteError.Step(message: errorMessage)
         }
-        print("\(table) table created.")
+        print("table created")
     }
 
     //TODO: Move inside Contact
