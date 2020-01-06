@@ -26,7 +26,7 @@ let posts = Posts(database: db)
 //}
 //
 do {
-    let post = try posts.add(title: "Oliver!")
+    let post = try posts.add(title: "Aaron!")
     print("Just added post # \(post.id), \(post.title())")
 }
 catch {

@@ -37,9 +37,19 @@ class Posts
             throw SQLiteError.Step(message: "sqlite3_step")
         }
         
-        print("Successfully inserted row.")
+        print("Successfully inserted Post.")
         
-        //TODO: Get id number and return it
-        return Post(id: 7, db: database) //TODO: Get the correct id
+        let id = postId(title: title)
+        return Post(id: id, db: database)
+    }
+    
+    func postId(title: String) -> Int {
+        let idSql = "SELECT id FROM Posts WHERE name = ?"
+        let queryStatement = try! db.prepareStatement(sql: idSql) //TODO: Remove Bang!
+        defer { sqlite3_finalize(queryStatement) }
+        guard sqlite3_bind_text(queryStatement, 1, title, -1, nil) == SQLITE_OK else { return 77 } //TODO: This is WRong
+        guard sqlite3_step(queryStatement) == SQLITE_ROW else { return 89 } //TODO: This is WRong
+        let queryResultCol1 = sqlite3_column_int(queryStatement, 0)
+        return Int(queryResultCol1)
     }
 }

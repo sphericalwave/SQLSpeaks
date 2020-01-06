@@ -25,15 +25,15 @@ class Post
         defer { sqlite3_finalize(queryStatement) }
         
         guard sqlite3_bind_int(queryStatement, 1, Int32(id)) == SQLITE_OK else {
-            return "Fuck"
+            return "Fuck" //TODO: This is WRong
         }
         
         guard sqlite3_step(queryStatement) == SQLITE_ROW else {
-            return "Shit"
+            return "Shit" //TODO: This is WRong
         }
         
         let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
-        let title = String(cString: queryResultCol1!) //as NSString
+        let title = String(cString: queryResultCol1!)
         return title
     }
 }
