@@ -9,18 +9,11 @@
 import Foundation
 import SQLite3
 
-class SQLiteDatabase {
+class SQLiteDatabase
+{
     fileprivate var dbPointer: OpaquePointer?
     
-    convenience init() {
-        self.init(path: "./db.sqlite3")
-    }
-
-    init(path: String) {
-        //self.dbPointer = nil
-        guard sqlite3_open(path, &dbPointer) == SQLITE_OK else { fatalError() }
-    }
-    
+    //TODO: Remove this
     var errorMessage: String {
         if let errorPointer = sqlite3_errmsg(dbPointer) {
             let errorMessage = String(cString: errorPointer)
@@ -30,39 +23,19 @@ class SQLiteDatabase {
         }
     }
     
-//    private init(dbPointer: OpaquePointer?) {
-//        self.dbPointer = dbPointer
-//    }
-    
-    deinit {
-        sqlite3_close(dbPointer)
+    convenience init() {
+        //TODO: Make Generic
+        self.init(path: "/Users/DarkKnight/Desktop/SQLSpeaks/SQLSpeaks/db.sqlite")
+    }
+
+    init(path: String) {
+        guard sqlite3_open(path, &dbPointer) == SQLITE_OK else { fatalError() }
     }
     
-//    static func open(path: String) throws -> SQLiteDatabase {
-//        var db: OpaquePointer? = nil
-//        // 1
-//        if sqlite3_open(path, &db) == SQLITE_OK {
-//            // 2
-//            return SQLiteDatabase(dbPointer: db)
-//        } else {
-//            // 3
-//            defer {
-//                if db != nil {
-//                    sqlite3_close(db)
-//                }
-//            }
-//
-//            if let errorPointer = sqlite3_errmsg(db) {
-//                let message = String.init(cString: errorPointer)
-//                throw SQLiteError.OpenDatabase(message: message)
-//            } else {
-//                throw SQLiteError.OpenDatabase(message: "No error message provided from sqlite.")
-//            }
-//        }
-//    }
-}
 
-extension SQLiteDatabase {
+    
+    deinit { sqlite3_close(dbPointer) }
+
     func prepareStatement(sql: String) throws -> OpaquePointer? {
         var statement: OpaquePointer? = nil
         guard sqlite3_prepare_v2(dbPointer, sql, -1, &statement, nil) == SQLITE_OK else {
@@ -71,9 +44,7 @@ extension SQLiteDatabase {
         
         return statement
     }
-}
 
-extension SQLiteDatabase {
     func createTable(table: SQLTable.Type) throws {
         // 1
         let createTableStatement = try prepareStatement(sql: table.createStatement)
@@ -87,11 +58,7 @@ extension SQLiteDatabase {
         }
         print("\(table) table created.")
     }
-}
 
-
-
-extension SQLiteDatabase {
     func insertContact(contact: Contact) throws {
         let insertSql = "INSERT INTO Contact (Id, Name) VALUES (?, ?);"
         let insertStatement = try prepareStatement(sql: insertSql)
@@ -111,9 +78,7 @@ extension SQLiteDatabase {
         
         print("Successfully inserted row.")
     }
-}
 
-extension SQLiteDatabase {
     func contact(id: Int32) -> Contact? {
         let querySql = "SELECT * FROM Contact WHERE Id = ?;"
         guard let queryStatement = try? prepareStatement(sql: querySql) else {
@@ -140,3 +105,5 @@ extension SQLiteDatabase {
         return Contact(id: id, name: name)
     }
 }
+
+

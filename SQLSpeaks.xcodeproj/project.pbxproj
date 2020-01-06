@@ -11,6 +11,7 @@
 		AF9B8F3623C3946D001DB2DB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3523C3946D001DB2DB /* Database.swift */; };
 		AF9B8F3823C395BA001DB2DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3723C395BA001DB2DB /* Contact.swift */; };
 		AF9B8F3A23C395DD001DB2DB /* SQLiteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */; };
+		AF9B8F3C23C39F6F001DB2DB /* Destroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		AF9B8F3523C3946D001DB2DB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		AF9B8F3723C395BA001DB2DB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteError.swift; sourceTree = "<group>"; };
+		AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destroy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			children = (
 				AF9B8F2E23C3945D001DB2DB /* main.swift */,
 				AF9B8F3523C3946D001DB2DB /* Database.swift */,
+				AF9B8F3B23C39F6F001DB2DB /* Destroy.swift */,
 				AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */,
 				AF9B8F3723C395BA001DB2DB /* Contact.swift */,
 			);
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9B8F3A23C395DD001DB2DB /* SQLiteError.swift in Sources */,
+				AF9B8F3C23C39F6F001DB2DB /* Destroy.swift in Sources */,
 				AF9B8F3823C395BA001DB2DB /* Contact.swift in Sources */,
 				AF9B8F3623C3946D001DB2DB /* Database.swift in Sources */,
 				AF9B8F2F23C3945D001DB2DB /* main.swift in Sources */,

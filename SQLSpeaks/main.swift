@@ -22,6 +22,7 @@ do {
   print(db.errorMessage)
 }
 
-let first = db.contact(id: 1)
-print("\(first?.id) \(first?.name)")
+if let aContact = db.contact(id: 1) {
+    print("\(aContact.id) \(aContact.name)")
+}
 
