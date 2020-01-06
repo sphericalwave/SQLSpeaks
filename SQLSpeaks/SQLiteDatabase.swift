@@ -53,7 +53,7 @@ class SQLiteDatabase
 
     //TODO: Move inside Contact
     func insertPost(contact: Post) throws {
-        let insertSql = "INSERT INTO Contact (Id, Name) VALUES (?, ?);"
+        let insertSql = "INSERT INTO Posts (Id, Name) VALUES (?, ?);"
         let insertStatement = try prepareStatement(sql: insertSql)
         defer {
             sqlite3_finalize(insertStatement)
@@ -74,7 +74,7 @@ class SQLiteDatabase
 
     //TODO: Move inside Contact
     func contact(id: Int32) -> Post? {
-        let querySql = "SELECT * FROM Contact WHERE Id = ?;"
+        let querySql = "SELECT * FROM Posts WHERE Id = ?;"
         guard let queryStatement = try? prepareStatement(sql: querySql) else {
             return nil
         }

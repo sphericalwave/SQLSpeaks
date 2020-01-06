@@ -22,7 +22,7 @@ extension Post: SQLTable
 {
   static var createStatement: String {
     return """
-    CREATE TABLE Contact(
+    CREATE TABLE Posts(
       Id INT PRIMARY KEY NOT NULL,
       Name CHAR(255)
     );
