@@ -50,33 +50,6 @@ class SQLiteDatabase
         }
         print("table created")
     }
-
-//    //TODO: Move inside Contact
-//    func contact(id: Int32) -> Post? {
-//        let querySql = "SELECT * FROM Posts WHERE Id = ?;"
-//        guard let queryStatement = try? prepareStatement(sql: querySql) else {
-//            return nil
-//        }
-//        
-//        defer {
-//            sqlite3_finalize(queryStatement)
-//        }
-//        
-//        guard sqlite3_bind_int(queryStatement, 1, id) == SQLITE_OK else {
-//            return nil
-//        }
-//        
-//        guard sqlite3_step(queryStatement) == SQLITE_ROW else {
-//            return nil
-//        }
-//        
-//        let id = sqlite3_column_int(queryStatement, 0)
-//        
-//        let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
-//        let name = String(cString: queryResultCol1!) as NSString
-//        
-//        return Post(id: id, name: name)
-//    }
 }
 
 

@@ -26,8 +26,8 @@ let posts = Posts(database: db)
 //}
 //
 do {
-    let post = try posts.add(title: "name")
-    print("Just added post # \(post.id)")
+    let post = try posts.add(title: "Oliver!")
+    print("Just added post # \(post.id), \(post.title())")
 }
 catch {
     print(error)

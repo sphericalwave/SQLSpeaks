@@ -7,16 +7,33 @@
 //
 
 import Foundation
+import SQLite3
 
 class Post
 {
     let id: Int
+    let db: SQLiteDatabase
     
-    init(id: Int) {
+    init(id: Int, db: SQLiteDatabase) {
         self.id = id
+        self.db = db
     }
     
     func title() -> String {
-        return "Test"
+        let titleSql = "SELECT name FROM Posts WHERE id = ?"
+        let queryStatement = try! db.prepareStatement(sql: titleSql) //TODO: Remove Bang!
+        defer { sqlite3_finalize(queryStatement) }
+        
+        guard sqlite3_bind_int(queryStatement, 1, Int32(id)) == SQLITE_OK else {
+            return "Fuck"
+        }
+        
+        guard sqlite3_step(queryStatement) == SQLITE_ROW else {
+            return "Shit"
+        }
+        
+        let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
+        let title = String(cString: queryResultCol1!) //as NSString
+        return title
     }
 }
