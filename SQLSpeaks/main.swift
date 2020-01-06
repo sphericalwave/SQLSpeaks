@@ -8,13 +8,7 @@
 
 import Foundation
 
-let db: SQLiteDatabase!
-do {
-  db = try SQLiteDatabase.open(path: ".")
-  print("Successfully opened connection to database.")
-} catch SQLiteError.OpenDatabase(let message) {
-  print("Unable to open database. Verify that you created the directory described in the Getting Started section.")
-}
+let db = SQLiteDatabase()
 
 do {
   try db.createTable(table: Contact.self)
