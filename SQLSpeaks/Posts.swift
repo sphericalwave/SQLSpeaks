@@ -9,8 +9,11 @@
 import Foundation
 import SQLite3
 
-class Posts
+struct Posts: Sequence, IteratorProtocol
 {
+    typealias Element = Post
+    var index: Int = 1 //SQL indexes start at 1...TODO: violating the mutability principle
+    
     let database: SQLiteDatabase
     
     init(database: SQLiteDatabase) {
@@ -18,8 +21,27 @@ class Posts
     }
     
     //implement Sequence protocol
-    //func next() -> Post {
-    //}
+    mutating func next() -> Post? {
+        guard index <= count() else {
+            index = 1 //TODO: Violating the Mutability Principle
+            return nil
+        }
+        let post = Post(id: index, db: database)
+        index += 1
+        return post
+    }
+    
+    //TODO: Increase Efficiency don't want to hit the database repeatedly
+    //Appears to Work
+    //TODO: Fix Naming
+    func count() -> Int {
+        let idSql = "SELECT COUNT(*) FROM posts"
+        let queryStatement = try! db.prepareStatement(sql: idSql) //TODO: Remove Bang!
+        defer { sqlite3_finalize(queryStatement) }
+        guard sqlite3_step(queryStatement) == SQLITE_ROW else { return 89 } //TODO: This is WRong
+        let queryResultCol1 = sqlite3_column_int(queryStatement, 0)
+        return Int(queryResultCol1)
+    }
     
     func add(title: String) throws -> Post {
         let insertSql = "INSERT INTO Posts (Name) VALUES (?);"

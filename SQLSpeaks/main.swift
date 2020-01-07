@@ -21,10 +21,8 @@ do { try db.createTable(sql: postsTableSQL) }
 catch { print(db.errorMessage) }
 
 let posts = Posts(database: db)
-//for post in posts {
-//  print("Post: \(post.name())")
-//}
-//
+
+
 do {
     let post = try posts.add(title: "Aaron!")
     print("Just added post # \(post.id), \(post.title())")
@@ -33,3 +31,8 @@ catch {
     print(error)
 }
 
+print("Post count: \(posts.count())")
+
+for post in posts {
+  print("Post #: \(post.id), title: \(post.title())")
+}
