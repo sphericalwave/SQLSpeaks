@@ -19,19 +19,12 @@ class Post
         self.db = db
     }
     
-    func title() -> String {
+    func title() -> String {    //FIXME: Encapsulate sqlite3 calls
         let titleSql = "SELECT name FROM Posts WHERE id = ?"
         let queryStatement = try! db.prepareStatement(sql: titleSql) //TODO: Remove Bang!
-        defer { sqlite3_finalize(queryStatement) }
-        
-        guard sqlite3_bind_int(queryStatement, 1, Int32(id)) == SQLITE_OK else {
-            return "Fuck" //TODO: This is WRong
-        }
-        
-        guard sqlite3_step(queryStatement) == SQLITE_ROW else {
-            return "Shit" //TODO: This is WRong
-        }
-        
+        defer { sqlite3_finalize(queryStatement) }  //FIXME: Test at end
+        guard sqlite3_bind_int(queryStatement, 1, Int32(id)) == SQLITE_OK else { fatalError() }
+        guard sqlite3_step(queryStatement) == SQLITE_ROW else { fatalError() }
         let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
         let title = String(cString: queryResultCol1!)
         return title

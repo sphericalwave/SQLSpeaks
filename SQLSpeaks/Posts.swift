@@ -26,8 +26,7 @@ struct Posts
         catch { print(database.errorMessage) }
     }
     
-    //TODO: Increase Efficiency don't want to hit the database repeatedly
-    func count() -> Int {
+    func count() -> Int {       //TODO: Increase Efficiency don't want to hit the database repeatedly
         let idSql = "SELECT COUNT(*) FROM posts"
         let queryStatement = try! db.prepareStatement(sql: idSql) //TODO: Remove Bang!
         defer { sqlite3_finalize(queryStatement) }
