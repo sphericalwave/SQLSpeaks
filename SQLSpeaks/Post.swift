@@ -12,7 +12,7 @@ import SQLite3
 class Post
 {
     let id: Int
-    let db: SQLiteDatabase
+    private let db: SQLiteDatabase
     
     init(id: Int, db: SQLiteDatabase) {
         self.id = id

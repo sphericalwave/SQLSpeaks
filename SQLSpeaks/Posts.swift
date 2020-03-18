@@ -13,8 +13,7 @@ struct Posts: Sequence, IteratorProtocol
 {
     typealias Element = Post
     var index: Int = 1 //SQL indexes start at 1...TODO: violating the mutability principle
-    
-    let database: SQLiteDatabase
+    private let database: SQLiteDatabase
     
     init(database: SQLiteDatabase) {
         self.database = database
@@ -48,9 +47,9 @@ struct Posts: Sequence, IteratorProtocol
         let insertStatement = try db.prepareStatement(sql: insertSql)
         defer { sqlite3_finalize(insertStatement) } //TODO: Can i just make this last?
         
-        //TODO: Find a way to print code
-//        let code =  sqlite3_bind_text(insertStatement, 1, title, -1, nil)
-//        print("sqlite3_bind_text response code: \(code)")
+//        #warning("TODO: Find a way to print code")
+////        let code =  sqlite3_bind_text(insertStatement, 1, title, -1, nil)
+////        print("sqlite3_bind_text response code: \(code)")
         guard sqlite3_bind_text(insertStatement, 1, title, -1, nil) == SQLITE_OK else {
             throw SQLiteError.Bind(message: "sqlite3_bind_text")
         }

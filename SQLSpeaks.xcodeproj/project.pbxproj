@@ -14,6 +14,9 @@
 		AF9B8F4623C3C030001DB2DB /* SQLSpeaksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F4523C3C030001DB2DB /* SQLSpeaksTests.swift */; };
 		AF9B8F4B23C3E435001DB2DB /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F3523C3946D001DB2DB /* SQLiteDatabase.swift */; };
 		AF9B8F4D23C3E529001DB2DB /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F4C23C3E529001DB2DB /* Posts.swift */; };
+		AF9B8F4F23C809F4001DB2DB /* Suppliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F4E23C809F4001DB2DB /* Suppliers.swift */; };
+		AF9B8F5123C80A00001DB2DB /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F5023C80A00001DB2DB /* Supplier.swift */; };
+		AF9B8F5323C80A23001DB2DB /* SupplierGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B8F5223C80A23001DB2DB /* SupplierGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +41,9 @@
 		AF9B8F4523C3C030001DB2DB /* SQLSpeaksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLSpeaksTests.swift; sourceTree = "<group>"; };
 		AF9B8F4723C3C030001DB2DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9B8F4C23C3E529001DB2DB /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		AF9B8F4E23C809F4001DB2DB /* Suppliers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suppliers.swift; sourceTree = "<group>"; };
+		AF9B8F5023C80A00001DB2DB /* Supplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
+		AF9B8F5223C80A23001DB2DB /* SupplierGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,9 @@
 				AF9B8F3923C395DD001DB2DB /* SQLiteError.swift */,
 				AF9B8F3723C395BA001DB2DB /* Post.swift */,
 				AF9B8F4C23C3E529001DB2DB /* Posts.swift */,
+				AF9B8F4E23C809F4001DB2DB /* Suppliers.swift */,
+				AF9B8F5023C80A00001DB2DB /* Supplier.swift */,
+				AF9B8F5223C80A23001DB2DB /* SupplierGroup.swift */,
 			);
 			path = SQLSpeaks;
 			sourceTree = "<group>";
@@ -186,11 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9B8F5123C80A00001DB2DB /* Supplier.swift in Sources */,
 				AF9B8F3A23C395DD001DB2DB /* SQLiteError.swift in Sources */,
+				AF9B8F4F23C809F4001DB2DB /* Suppliers.swift in Sources */,
 				AF9B8F3823C395BA001DB2DB /* Post.swift in Sources */,
 				AF9B8F3623C3946D001DB2DB /* SQLiteDatabase.swift in Sources */,
 				AF9B8F2F23C3945D001DB2DB /* main.swift in Sources */,
 				AF9B8F4D23C3E529001DB2DB /* Posts.swift in Sources */,
+				AF9B8F5323C80A23001DB2DB /* SupplierGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
